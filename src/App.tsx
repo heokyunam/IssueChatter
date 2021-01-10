@@ -1,9 +1,10 @@
 import React from 'react';
+import LeftMenu from './components/header/LeftMenu';
 
 function App() {
   return (
     <div>
-      App.tsx is running successful
+      <LeftMenu />
     </div>
   );
 }
