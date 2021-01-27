@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
 import './LeftMenu.scss';
-import profile from '../../images/profile.jpg';
+import profile from './profile.jpg';
 import {BsChatDotsFill, BsGrid} from 'react-icons/bs';
 import {GoIssueOpened} from 'react-icons/go';
 import {AiOutlineTeam} from 'react-icons/ai';
