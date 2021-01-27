@@ -78,3 +78,5 @@ storage.rules
 .firebaserc
 tsconfig.json
 yarn.lock
+
+/build/
