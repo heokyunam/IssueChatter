@@ -7,6 +7,7 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import rootReducer from './stores';
 import logger from 'redux-logger'
+import './fonts/fonts.css';
 
 const middlewares = [logger];
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import LeftMenu from './components/elements/header/LeftMenu';
+import LeftMenu from './components/elements/LeftMenu';
 import { Route } from 'react-router-dom';
 import {Chats, Issues, Projects, Settings, Teams} from './components/pages';
 

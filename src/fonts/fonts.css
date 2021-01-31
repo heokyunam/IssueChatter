@@ -1,0 +1,53 @@
+@font-face {
+    font-family: "NanumSquare_acB";
+    font-weight: 200;
+    src: url("./NanumSquare_acB.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "NanumSquare_acEB";
+    font-weight: 200;
+    src: url("./NanumSquare_acEB.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "NanumSquare_acL";
+    font-weight: 200;
+    src: url("./NanumSquare_acL.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "NanumSquare_acR";
+    font-weight: 200;
+    src: url("./NanumSquare_acR.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Aritta-Bold";
+    font-weight: 200;
+    src: url("./Aritta-Bold.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Aritta-Light";
+    font-weight: 200;
+    src: url("./Aritta-Light.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Aritta-Medium";
+    font-weight: 200;
+    src: url("./Aritta-Medium.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Aritta-SemiBold";
+    font-weight: 200;
+    src: url("./Aritta-SemiBold.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Aritta-Thin";
+    font-weight: 200;
+    src: url("./Aritta-Thin.ttf") format("truetype");
+}
