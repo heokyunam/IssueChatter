@@ -24,7 +24,7 @@ const LeftMenu : FC<{}> = () => {
                 <li><Link to="/settings"><FiSettings />Settings</Link></li>
             </ul>
             <div className="logout">
-                <a href="javascript:;"><FiLogOut />Log Out</a>
+                <a href=""><FiLogOut />Log Out</a>
             </div>
         </div>
     )

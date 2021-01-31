@@ -26,16 +26,16 @@ type LoadIssuesAction = {
 
 export type IssueAction = InsertIssueAction | UpdateIssueAction | DeleteIssueAction | LoadIssuesAction
 
-type IssueState = {
+export type IssuesState = {
     issues: Issue[]
 }
 
-const initialState: IssueState = {
+const initialState: IssuesState = {
     issues: []
 }
 
 export const issuesReducer = (
-    state: IssueState = initialState,
+    state: IssuesState = initialState,
     action: IssueAction
     ) => {
         switch(action.type) {
