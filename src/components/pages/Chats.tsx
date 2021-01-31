@@ -8,8 +8,9 @@ import { NEED_LOGIN, NEED_MOVE_ROOM } from '../../lang';
 const Chats: React.FC = () => {
     const dispatch = useDispatch();
     const loginUserId = useSelector((state: RootState) => state.login.loginUserId);
-    let selectedRoom = useSelector((state: RootState) => state.chats.selectedRoom);
-    const rooms = useSelector((state: RootState) => state.chats.rooms);
+    let selectedRoom = useSelector((state: RootState) => state.rooms.selectedRoom);
+    const rooms = useSelector((state: RootState) => state.rooms.rooms);
+    const chats = useSelector((state: RootState) => state.chats.chats);
 
     const [newRoom, setNewRoom] = useState('');
     const [newChat, setNewChat] = useState('');
@@ -17,7 +18,7 @@ const Chats: React.FC = () => {
     if(selectedRoom == null) {
         if(rooms.length > 0) {
             dispatch({
-                type: "MOVE_CHAT",
+                type: "MOVE_ROOM",
                 payload: rooms[0]
             })
 
@@ -98,11 +99,11 @@ const Chats: React.FC = () => {
                 </div>
             </div>
             <div className="chats">
-                {selectedRoom != null && (selectedRoom.chats.map((value) => (
+                {chats.map((value) => (
                     <div className="chat" key={value.uuid}>
                         {value.text}
                     </div>
-                )))}
+                ))}
                 <div>
                     <input name="chat" value={newChat} onChange={onChange}/>
                     <button name="chat" onClick={onClickAdd}>추가</button>

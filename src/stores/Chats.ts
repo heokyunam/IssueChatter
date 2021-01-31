@@ -5,50 +5,26 @@ export type Chat = {
     chatRoomId: string,
 }
 
-export type ChatRoom = {
-    uuid: string,
-    title: string,
-    chats: Chat[],
-}
-
 type InsertChatAction = {
     type: "INSERT_CHAT",
     payload: Chat,
 }
 
-type InsertRoomAction = {
-    type: "INSERT_ROOM",
-    payload: ChatRoom,
-}
-
-type MoveRoomAction = {
-    type: "MOVE_ROOM",
-    payload: ChatRoom,
-}
-
-export type ChatAction = InsertChatAction | InsertRoomAction | MoveRoomAction;
+export type ChatAction = InsertChatAction;
 
 export type ChatsState = {
-    rooms: ChatRoom[],
-    selectedRoom: ChatRoom | null,
+    chats: Chat[]
 }
 
 const initialState: ChatsState = {
-    rooms: [
+    chats: [
         {
-            uuid: "1234",
-            title: "방 타이틀",
-            chats: [
-                {
-                    uuid: "1134",
-                    text: "챗챗",
-                    writerId: "111",
-                    chatRoomId: "1234"
-                }
-            ]
+            uuid: "2333",
+            text: "챗챗",
+            writerId: "heokyunam",
+            chatRoomId: "1234",
         }
-    ],
-    selectedRoom: null
+    ]
 }
 
 export const chatsReducer = (
@@ -56,26 +32,10 @@ export const chatsReducer = (
     action: ChatAction
 ) => {
     switch(action.type) {
-        case "INSERT_ROOM":
-            return {
-                ...state
-                , rooms: [...state.rooms, action.payload]
-                , selectedRoom: action.payload
-            };
         case "INSERT_CHAT":
-            let selectedRoom = state.selectedRoom;
-
-            selectedRoom?.chats.push(action.payload);
-
             return {
                 ...state
-                , rooms: [...state.rooms, selectedRoom]
-                , selectedRoom
-            }
-        case "MOVE_ROOM":
-            return {
-                ...state
-                , selectedRoom: action.payload
+                , chats: [...state.chats, action.payload]
             }
         default:
             return state;
