@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { v4 } from "uuid";
 import { RootState } from "../../../stores";
-
+import './index.scss';
 
 export const ChatRooms = () => {
     const rooms = useSelector((state: RootState) => state.rooms.rooms);
@@ -38,25 +38,40 @@ export const ChatRooms = () => {
         setNewRoom(e.target.value);
     }
 
-    const onClickAdd = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    const onClickAdd = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
         insertRoom(newRoom);
         setNewRoom('');
     }
     
     return (
         <div className="rooms">
-            <div className="title">
-                <div>Chat Rooms</div>
-                <div>Recent Chats &gt;</div>
-            </div>
-            {rooms.map((value) => (
-                <div className="room" key={value.uuid}>
-                    {value.title}
+            <div className="top">
+                <div>
+                    <div className="title">Chat Rooms</div>
+                    <div className="sort">Recent Chats &gt;</div>
                 </div>
-            ))}
-            <div>
-                <input name="room" value={newRoom} onChange={onChange}/>
-                <button name="room" onClick={onClickAdd}>추가</button>
+                <div>
+                    <div>
+                        <input type="text"  value={newRoom} onChange={onChange}/>
+                    </div>
+                    <div>
+                        <span className="btn-add" onClick={onClickAdd}>
+                            New Room
+                        </span>
+                    </div>
+                    
+                </div>
+            </div>
+            <div className="rooms-list">
+                {rooms.map((value) => (
+                    <div className="room" key={value.uuid}>
+                        <div className="profile">
+                            <div className="title">
+                                {value.title}
+                            </div>
+                        </div>
+                    </div>
+                ))}
             </div>
         </div>
     )
