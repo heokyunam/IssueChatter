@@ -20,7 +20,7 @@ const initialState: ChatsState = {
     chats: [
         {
             uuid: "2333",
-            text: "챗챗",
+            text: "오늘은 바빠서 내일 할 수 있을 것 같아요. 나중에 시간 될 때 연락 드릴게요.",
             writerId: "heokyunam",
             chatRoomId: "1234",
         }

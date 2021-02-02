@@ -3,6 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { v4 } from "uuid";
 import { NEED_LOGIN, NEED_MOVE_ROOM } from "../../../lang";
 import { RootState } from "../../../stores";
+import './chat.scss';
+import profile from "../LeftMenu/profile.jpg"
+import attach from "./attach-2.svg";
+import more from "./more-vertical.svg";
 
 export const ChatList = () => {
     const dispatch = useDispatch();
@@ -44,11 +48,29 @@ export const ChatList = () => {
     
     return (
         <div className="chats">
-            {chats.map((value) => (
-                <div className="chat" key={value.uuid}>
-                    {value.text}
+            <div className="room-title">
+                <div className="profile">
+                    <img src={profile} alt=""/>
+                    <div className="text">
+                        <div className="title">방 타이틀</div>
+                        <div className="status">writing...</div>
+                    </div>
                 </div>
-            ))}
+                <div className="actions">
+                    <div className="attach"><a><img src={attach}></img></a></div>
+                    <div className="more"><a><img src={more}></img></a></div>
+                </div>
+            </div>
+            <div className="chat-list">
+                {chats.map((value) => (
+                    <div className="chat" key={value.uuid}>                        
+                        <img src={profile} alt=""/>
+                        <div className="text">
+                            {value.text}
+                        </div>
+                    </div>
+                ))}
+            </div>
             <div>
                 <input name="chat" value={newChat} onChange={onChange}/>
                 <button name="chat" onClick={onClickAdd}>추가</button>

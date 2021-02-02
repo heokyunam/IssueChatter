@@ -1,7 +1,7 @@
 import React from 'react';
 import './Chats.scss';
-import { ChatRooms } from '../elements/chatRooms';
-import { ChatList } from '../elements/chatList';
+import { ChatRooms } from '../elements/chatRooms/rooms';
+import { ChatList } from '../elements/chatList/chat';
 
 const Chats = () => {
     return (

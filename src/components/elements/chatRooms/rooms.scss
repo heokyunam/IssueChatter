@@ -1,0 +1,89 @@
+$clear_blue: #2a8bf2;
+$grey_color: #707c97;
+
+.rooms {
+    .top {
+        display: flex;
+        .title {
+            font-size: 36px;
+            font-weight: 500;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 0.72;
+            letter-spacing: 0.36px;
+            text-align: left;
+            color: #0d1c2e;
+        }
+
+        .sort {
+            font-size: 18px;
+            font-weight: 500;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.44;
+            letter-spacing: normal;
+            text-align: left;
+            color: #707c97;
+        }
+
+        .btn-add {
+            border-radius: 6px;
+            padding: 18px 25px;
+            color: white;
+            background: linear-gradient($clear_blue, #7cb8f7);
+            box-shadow: 10px 6px 25px 0 rgba(42, 139, 242, 0.15), 4px 4px 25px 0 rgba(42, 139, 242, 0.05), 6px 6px 25px 0 rgba(42, 139, 242, 0.15);
+        }
+    }
+
+    .room {
+        margin: 20px 10px 20px 1px;
+        padding: 10px 20px;
+        border-radius: 6px;
+        background-color: #ffffff;
+        
+        .profile {
+            display: flex;
+            justify-content: space-between;
+
+            .left {
+                display: flex;
+
+                .text {
+                    margin-top: 10px;
+                    margin-left: 10px;
+    
+                    .title {
+                        font-size: 18px;
+                        font-weight: bold;
+                        font-stretch: normal;
+                        font-style: normal;
+                        line-height: normal;
+                        letter-spacing: normal;
+                        color: #0d1c2e;
+                    }
+    
+                    .status {
+                        margin-top: 5px;
+                        color: $clear_blue;
+                    }
+                }
+            }
+
+            .recent-time {
+                margin-top: 10px;
+                color: $grey_color;
+            }
+    
+            img {
+                border-radius: 50%;
+                width: 54px;
+                height: 54px;
+            }
+        }
+
+        .description {
+            margin-top: 10px;
+            color: $grey_color;
+        }
+    }
+}

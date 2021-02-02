@@ -2,7 +2,8 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { v4 } from "uuid";
 import { RootState } from "../../../stores";
-import './index.scss';
+import './rooms.scss';
+import profile from "../LeftMenu/profile.jpg"
 
 export const ChatRooms = () => {
     const rooms = useSelector((state: RootState) => state.rooms.rooms);
@@ -66,9 +67,24 @@ export const ChatRooms = () => {
                 {rooms.map((value) => (
                     <div className="room" key={value.uuid}>
                         <div className="profile">
-                            <div className="title">
-                                {value.title}
+                            <div className="left">
+                                <img src={profile}/>
+                                <div className="text">
+                                <div className="title">
+                                    {value.title}
+                                </div>
+                                <div className="status">
+                                    writing...
+                                </div>
                             </div>
+                            </div>
+                            <div className="recent-time">
+                                1 hour ago
+                            </div>
+                        </div>
+                        <div className="description">
+                            오늘은 바빠서 내일 할 수 있을 것 같아요.
+                            나중에 시간 될 때 연락 드릴게요.
                         </div>
                     </div>
                 ))}
