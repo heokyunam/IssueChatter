@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { v4 } from "uuid";
-import { NEED_LOGIN, NEED_MOVE_ROOM } from "../../../lang";
+import { EMPTY_TEXT, NEED_LOGIN, NEED_MOVE_ROOM } from "../../../lang";
 import { RootState } from "../../../stores";
 import './chat.scss';
 import profile from "../LeftMenu/profile.jpg"
 import attach from "./attach-2.svg";
 import more from "./more-vertical.svg";
+import btnChat from "./btn-chat.svg";
 
 export const ChatList = () => {
     const dispatch = useDispatch();
@@ -15,13 +16,17 @@ export const ChatList = () => {
     let selectedRoom = useSelector((state: RootState) => state.rooms.selectedRoom);
     const [newChat, setNewChat] = useState('');    
 
-    const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const onChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         setNewChat(e.target.value);
     }
 
     const onClickAdd = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-        insertChat(newChat);
-        setNewChat('');
+        if(newChat.length > 0) {
+            insertChat(newChat);
+            setNewChat('');
+        } else {
+            alert(EMPTY_TEXT);
+        }
     }
 
     const insertChat = (text: string) => {
@@ -63,7 +68,7 @@ export const ChatList = () => {
             </div>
             <div className="chat-list">
                 {chats.map((value) => (
-                    <div className="chat" key={value.uuid}>                        
+                    <div className={"chat" + ((value.writerId == loginUserId)? " my": "")} key={value.uuid}>                        
                         <img src={profile} alt=""/>
                         <div className="text">
                             {value.text}
@@ -71,9 +76,11 @@ export const ChatList = () => {
                     </div>
                 ))}
             </div>
-            <div>
-                <input name="chat" value={newChat} onChange={onChange}/>
-                <button name="chat" onClick={onClickAdd}>추가</button>
+            <div className="bottom">
+                <textarea name="chat" value={newChat} onChange={onChange} rows={1}/>
+                <button name="chat" onClick={onClickAdd}>
+                    <img src={btnChat} />
+                </button>
             </div>
         </div>
     )

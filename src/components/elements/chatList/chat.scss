@@ -1,5 +1,9 @@
+$chats_width: 40vw;
+$blue_gradient: linear-gradient(to right, #60a9f6, #2a8bf2);
+
 .chats {
     background-color: #ffffff;
+    width: $chats_width;
 
     .room-title {
         background-color: #fafbff;
@@ -61,6 +65,7 @@
     .chat-list {
         .chat {
             display: flex;
+            padding: 15px 15px;
     
             img {
                 border-radius: 50%;
@@ -72,9 +77,52 @@
                 margin-left: 5px;
                 padding: 14px 27px 25px 22px;
                 box-shadow: 10px 10px 50px 0 rgba(42, 139, 242, 0.1), 15px 15px 35px 0 rgba(42, 139, 242, 0.05), 10px 10px 25px 0 rgba(42, 139, 242, 0.1);
-                background-image: linear-gradient(to top, #60a9f6, #2a8bf2);
+                background-image: $blue_gradient;
                 border-radius: 5px;
                 color: white;
+            }
+        }
+
+        .chat.my {
+            display: flex;
+            flex-direction: row-reverse;
+
+            .text {
+                background-color: white;
+                background-image: none;
+                color: #707c97;
+                margin-right: 5px;
+                border: 1px solid rgba(112, 124, 151, 0.25);
+            }
+        }
+    }
+
+    .bottom {
+        position: absolute;
+        bottom: 0;
+        height: 89px;
+        border-top: 1px solid rgba(112, 124, 151, 0.15);
+        width: $chats_width;
+        display: flex;
+
+        textarea {
+            all:unset;
+            flex: 1;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        button {
+            all:unset;
+            background-image: $blue_gradient;
+            border-radius: 50%;
+            height: 40px;
+            width: 40px;
+            margin-right: 30px;
+            margin-top: 20px;
+
+            img {
+                margin: 10px 10px;
             }
         }
     }

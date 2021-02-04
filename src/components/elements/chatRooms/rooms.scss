@@ -2,8 +2,13 @@ $clear_blue: #2a8bf2;
 $grey_color: #707c97;
 
 .rooms {
+    width: 40vw;
+    padding: 10px 20px;
+    
     .top {
         display: flex;
+        justify-content: space-between;
+
         .title {
             font-size: 36px;
             font-weight: 500;
@@ -26,20 +31,26 @@ $grey_color: #707c97;
             color: #707c97;
         }
 
-        .btn-add {
-            border-radius: 6px;
-            padding: 18px 25px;
-            color: white;
-            background: linear-gradient($clear_blue, #7cb8f7);
-            box-shadow: 10px 6px 25px 0 rgba(42, 139, 242, 0.15), 4px 4px 25px 0 rgba(42, 139, 242, 0.05), 6px 6px 25px 0 rgba(42, 139, 242, 0.15);
+        .new-room {
+            display: flex;
+            align-items: center;
+
+            .btn-add {
+                margin-left: 10px;
+                border-radius: 6px;
+                padding: 18px 25px;
+                color: white;
+                background: linear-gradient(to right, #7cb8f7, $clear_blue);
+                box-shadow: 10px 6px 25px 0 rgba(42, 139, 242, 0.15), 4px 4px 25px 0 rgba(42, 139, 242, 0.05), 6px 6px 25px 0 rgba(42, 139, 242, 0.15);
+            }
         }
     }
 
     .room {
-        margin: 20px 10px 20px 1px;
         padding: 10px 20px;
         border-radius: 6px;
         background-color: #ffffff;
+        margin-top: 10px;
         
         .profile {
             display: flex;

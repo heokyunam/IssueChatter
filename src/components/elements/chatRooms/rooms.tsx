@@ -8,6 +8,7 @@ import profile from "../LeftMenu/profile.jpg"
 export const ChatRooms = () => {
     const rooms = useSelector((state: RootState) => state.rooms.rooms);
     let selectedRoom = useSelector((state: RootState) => state.rooms.selectedRoom);
+    const chats = useSelector((state: RootState) => state.chats.chats)
     const [newRoom, setNewRoom] = useState('');  
     const dispatch = useDispatch();      
     
@@ -51,7 +52,7 @@ export const ChatRooms = () => {
                     <div className="title">Chat Rooms</div>
                     <div className="sort">Recent Chats &gt;</div>
                 </div>
-                <div>
+                <div className="new-room">
                     <div>
                         <input type="text"  value={newRoom} onChange={onChange}/>
                     </div>
@@ -83,8 +84,7 @@ export const ChatRooms = () => {
                             </div>
                         </div>
                         <div className="description">
-                            오늘은 바빠서 내일 할 수 있을 것 같아요.
-                            나중에 시간 될 때 연락 드릴게요.
+                            {chats[chats.length - 1].text}
                         </div>
                     </div>
                 ))}

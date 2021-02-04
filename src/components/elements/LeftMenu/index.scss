@@ -32,17 +32,14 @@ $middle_size: 20px;
 
     li {
       margin-bottom: 5.6vh;
+
       svg {
         margin-right: 5.6%;
       }
-    }
 
-    li.active {
-      color: $blue_color;
-    }
-
-    li:hover {
-      color: $blue_color;
+      a.active, a:hover {
+        color: $blue_color;
+      }
     }
   }
 
