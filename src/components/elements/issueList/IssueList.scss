@@ -1,0 +1,97 @@
+.issue-list {
+    width: 280px;
+    margin: 30px 40px 140px;
+    padding: 0 0 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px 0 #d2d7e0;
+    background-color: #d2d7e0;
+
+    .top-color {
+        height: 4px;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+    }
+
+    .top-color.back-log {
+        background-image: linear-gradient(to top, #c781ff, #e57373);
+    }
+    
+    .top-color.in-progress {
+        background-image: linear-gradient(to top, #ff9784, #ffb74d);
+    }
+    
+    .top-color.review {
+        background-image: linear-gradient(to top, #9ea7fc, #65b6f7);
+    }
+    
+    .top-color.complete {
+        background-image: linear-gradient(to top, #81d5ee, #7ed492);
+    }
+
+    > .title {
+        color: #707090;
+        font-size: 20px;
+        padding: 14px 0.4px 18px 14px;
+    }
+
+    > .issue {
+        border-radius: 5px;
+        background-color: #ffffff;
+        margin: 18px 10px 10px;
+        padding: 10px 10px 10px 9px;
+
+        .priority {
+            border-radius: 5px;
+            width: 85px;
+            height: 20px;
+            margin: 0 0 3px;
+            color: #ffffff;
+            text-align: center;
+            font-size: 12px;
+            line-height: 20px;
+        }
+
+        .priority.low {
+            background-color: #9ea7fc;
+        }
+
+        .priority.med {
+            background-color: #81d5ee;
+        }
+
+        .priority.high {
+            background-color: #c781ff;
+        }
+
+        .title {
+            margin-top: 13px;
+        }
+    }
+
+    .bottom {
+        color: #d2d7e0;
+        display: flex;
+        justify-content: space-between;
+        margin-top: 23px;
+        height: 30px;
+
+        .comment {
+            display: flex;
+
+            svg {
+                height: 30px;
+            }
+
+            .comment-num {
+                margin-left: 8px;
+                line-height: 30px;
+            }
+        }
+
+        .managers {
+            svg {
+                font-size: 30px;
+            }
+        }
+    }
+}

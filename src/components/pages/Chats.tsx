@@ -1,11 +1,10 @@
 import React from 'react';
-import './Chats.scss';
 import { ChatRooms } from '../elements/chatRooms/rooms';
 import { ChatList } from '../elements/chatList/chat';
 
 const Chats = () => {
     return (
-        <div className="contents">
+        <div className="chat-page">
             <ChatRooms />
             <ChatList />
         </div>
