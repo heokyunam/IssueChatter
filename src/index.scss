@@ -13,7 +13,43 @@ body {
 }
 
 .issue-page {
-  display: flex;
+  .top-area {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 34px;
+    margin-left: 40px;
+    margin-right: 40px;
+
+    .project-select {
+      display: flex;
+
+      .title {
+        font-size: 28px;
+        font-family: Aritta-Light;
+      }
+  
+      .down-icon {
+        width: 30px;
+        height: 30px;
+        margin-left: 5px;
+  
+        svg {
+          box-shadow: 0 0 10px 0 #d2d7e0;
+          background-color: #dddddd;
+          border-radius: 50%;
+        }
+      }
+    }
+
+    .managers {
+      font-size: 40px;
+      color: #d8d8e4;
+    }
+  }
+
+  .kanban {
+    display: flex;
+  }
 }
 
 .chat-page {

@@ -2,6 +2,8 @@ export type Issue = {
     uuid: string,
     title: string,
     content: string,
+    priority: "low" | "med" | "high"
+    state: "Backlog" | "InProgress" | "Review" | "Complete"
 }
 
 type InsertIssueAction = {
@@ -31,7 +33,32 @@ export type IssuesState = {
 }
 
 const initialState: IssuesState = {
-    issues: []
+    issues: [{
+        uuid: "5555",
+        priority: "low",
+        title: "연습하기",
+        content: "연습하기",
+        state: "Backlog"
+    }, {
+        uuid: "8888",
+        priority: "med",
+        title: "연습하기",
+        content: "연습하기",
+        state: "InProgress"
+    }, {
+        uuid: "6666",
+        priority: "high",
+        title: "연습하기",
+        content: "연습하기",
+        state: "Review"
+    }, {
+        uuid: "0000",
+        priority: "low",
+        title: "연습하기",
+        content: "연습하기",
+        state: "Complete"
+    },
+    ]
 }
 
 export const issuesReducer = (

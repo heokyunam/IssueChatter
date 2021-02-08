@@ -1,8 +1,12 @@
-import Issue from "./Issue";
+import IssueElement from "./Issue";
 import './IssueList.scss';
+import {RiAddCircleLine} from 'react-icons/ri';
+import { Issue } from "../../../stores/Issues";
+import BlankIssue from "./BlankIssue";
 
 interface IssueListParam {
-    type: "Backlog" | "InProgress" | "Review" | "Complete"
+    type: "Backlog" | "InProgress" | "Review" | "Complete",
+    issues: Issue[]
 }
 
 const typeDict = {
@@ -19,10 +23,16 @@ const IssueList = (param: IssueListParam) => {
         <div className="issue-list">
             <div className={"top-color " + topColorClass}></div>
             <div className="title">{param.type}</div>
-            <Issue priority="low" title="이슈 리스트 개발하기"/>
-            <Issue priority="med" title="이슈 리스트 개발하기"/>
-            <Issue priority="high" title="이슈 리스트 개발하기"/>
-            <div className="add-issue">Add Issue</div>
+            {param.issues.map(value => (
+                <IssueElement priority={value.priority} title={value.title}/>
+            ))}
+            <BlankIssue />
+            <div className="add-issue">
+                <div className="text">Add Issue</div>
+                <div className="add-icon">
+                    <RiAddCircleLine />
+                </div>
+            </div>
         </div>
     )
 }
