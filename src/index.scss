@@ -1,10 +1,15 @@
+@import './mixins.scss';
+
+ul, a, button {
+    all: unset;
+}
+
 ul {
     list-style:none;
     padding: 0;
 }
 
 a {
-    text-decoration: none;
     color: inherit;
 }
 
@@ -12,48 +17,63 @@ body {
   font-family: Aritta-Light;
 }
 
-.issue-page {
-  .top-area {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 34px;
-    margin-left: 40px;
-    margin-right: 40px;
+.App {
+  display: flex; 
 
-    .project-select {
+  .issue-page {
+    .top-area {
       display: flex;
+      justify-content: space-between;
+      margin-top: 34px;
+      margin-left: 40px;
+      margin-right: 40px;
 
-      .title {
-        font-size: 28px;
-        font-family: Aritta-Light;
-      }
-  
-      .down-icon {
-        width: 30px;
-        height: 30px;
-        margin-left: 5px;
-  
-        svg {
-          box-shadow: 0 0 10px 0 #d2d7e0;
-          background-color: #dddddd;
-          border-radius: 50%;
+      .project-select {
+        display: flex;
+
+        .title {
+          font-size: 28px;
+          font-family: Aritta-Light;
         }
+    
+        .down-icon {
+          width: 30px;
+          height: 30px;
+          margin-left: 5px;
+    
+          svg {
+            box-shadow: 0 0 10px 0 #d2d7e0;
+            background-color: #dddddd;
+            border-radius: 50%;
+          }
+        }
+      }
+
+      .managers {
+        font-size: 40px;
+        color: #d8d8e4;
       }
     }
 
-    .managers {
-      font-size: 40px;
-      color: #d8d8e4;
+    .kanban {
+      display: flex;
     }
   }
 
-  .kanban {
+  .chat-page {
     display: flex;
+    padding: 109px 60px 0 59px;
+    background: linear-gradient(#f3f3fb, #fdfbfd);
   }
 }
 
-.chat-page {
-  display: flex;
-  padding: 109px 60px 0 59px;
-  background: linear-gradient(#f3f3fb, #fdfbfd);
+@include mobile {
+  .App {
+    flex-wrap: wrap-reverse;
+
+    .chat-page {
+      max-height: 80%;
+      overflow: hidden;
+    }
+  }
 }

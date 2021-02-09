@@ -3,6 +3,7 @@ import './IssueList.scss';
 import {RiAddCircleLine} from 'react-icons/ri';
 import { Issue } from "../../../stores/Issues";
 import BlankIssue from "./BlankIssue";
+import { useDispatch } from "react-redux";
 
 interface IssueListParam {
     type: "Backlog" | "InProgress" | "Review" | "Complete",
@@ -18,6 +19,14 @@ const typeDict = {
 
 const IssueList = (param: IssueListParam) => {
     const topColorClass = typeDict[param.type].className;
+    const dispatch = useDispatch();
+
+    const showAddIssuePopup = () => {
+        dispatch({
+            type: "SHOW_ISSUE_EDIT_POPUP",
+            payload: true
+        })
+    }
 
     return (
         <div className="issue-list">
@@ -27,7 +36,7 @@ const IssueList = (param: IssueListParam) => {
                 <IssueElement priority={value.priority} title={value.title}/>
             ))}
             <BlankIssue />
-            <div className="add-issue">
+            <div className="add-issue" onClick={showAddIssuePopup}>
                 <div className="text">Add Issue</div>
                 <div className="add-icon">
                     <RiAddCircleLine />

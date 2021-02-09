@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import './index.scss';
+import './LeftMenu.scss';
 import profile from './profile.jpg';
 import {BsChatDotsFill, BsGrid} from 'react-icons/bs';
 import {GoIssueOpened} from 'react-icons/go';

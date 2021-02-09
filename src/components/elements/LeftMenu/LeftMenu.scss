@@ -1,3 +1,5 @@
+@import '../../../mixins.scss';
+
 $grey_color: #707c97;
 $blue_color: #2a8bf2;
 $middle_size: 20px;
@@ -57,5 +59,17 @@ $middle_size: 20px;
 
   .logout:hover {
     color: $blue_color;
+  }
+}
+
+@include mobile {
+  .left-menu {
+    flex-direction: row;
+    bottom: 0;
+    width: 100vw;
+
+    .actions {
+      display: flex;
+    }
   }
 }

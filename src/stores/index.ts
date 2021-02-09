@@ -5,6 +5,7 @@ import { roomsReducer, RoomsState } from './ChatRooms';
 import { projectsReducer, ProjectsState } from './Projects';
 import { teamsReducer, TeamsState } from './Teams';
 import { loginUserReducer, LoginUserState } from './LoginUser';
+import { popupReducer, PopupState } from './PopupStatus';
 
 const rootReducer = combineReducers({
     chats: chatsReducer,
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
     projects: projectsReducer,
     teams: teamsReducer,
     login: loginUserReducer,
+    popup: popupReducer,
 })
 
 export default rootReducer;
@@ -24,4 +26,5 @@ export type RootState = {
     projects: ProjectsState,
     teams: TeamsState,
     login: LoginUserState,
+    popup: PopupState,
 } ;
