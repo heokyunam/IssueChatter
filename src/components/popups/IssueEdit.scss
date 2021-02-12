@@ -18,26 +18,48 @@
         background-image: linear-gradient(to top, #6b95e3, #6784d0);
     }
 
-    .editor-area, .button-area {
-        padding: 0 20px;
-    }
-
-    .editor-area {
-        overflow: auto;
-        flex: 1;
-
-        .title-edit {
-            margin-top: 10px;
-            margin-bottom: 10px;
-            width: 100%;
-            height: 18px;
+    .option-area {
+        .option {
+            .text {
+                margin-right: 10px;
+            }
+            
+            select {
+                border-radius: 5px;
+                box-shadow: 0 20px 60px 0 rgba(0, 0, 0, 0.2);
+                background-color: #ffffff;
+                height: 23px;
+                width: 100px;
+                margin-bottom: 10px;
+            }
         }
     }
 
+    .edit-area {
+        padding: 10px 20px;
+        overflow: auto;
+        flex: 1;
+
+        .editor-area {
+            .title-edit {
+                margin-bottom: 15px;   
+                height: 18px;
+                width: 100%;
+
+                .text {
+                    margin-right: 10px;             
+                }
+
+                input {                    
+                    width: 70%;
+                }
+            }
+        }
+    }
+    
     .button-area {
+        padding: 20px 20px;
         width: calc(100% - 40px);
-        padding-bottom: 20px;
-        padding-top: 20px;
         bottom: 0;
         text-align: center;
         background-color: white;

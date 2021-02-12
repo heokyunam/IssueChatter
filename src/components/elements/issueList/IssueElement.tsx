@@ -2,29 +2,26 @@ import {MdComment} from 'react-icons/md';
 import {HiUserCircle} from 'react-icons/hi';
 import {RiAddCircleLine} from 'react-icons/ri';
 import { useDispatch } from 'react-redux';
+import { Issue } from '../../../stores/Issues';
 
 interface IssueParam {
-    priority: string,
-    title: string
+    issue: Issue
 }
 
-const Issue = (param: IssueParam) => {
+const IssueElement = (param: IssueParam) => {
     const dispatch = useDispatch();
 
     const showEditPopup = () => {
         dispatch({
-            type: "UPDATE_ISSUE_EDIT_POPUP",
-            payload: {
-                title: param.title,
-                content: ""
-            }
+            type: "SET_ISSUE",
+            payload: param.issue
         })
     }
 
     return (        
-        <div className="issue" onClick={showEditPopup}>
-            <div className={"priority " + param.priority}>{param.priority} Priority</div>
-            <div className="title">{param.title}</div>
+        <div className="issue" onClick={showEditPopup} key={param.issue.uuid}>
+            <div className={"priority " + param.issue.priority}>{param.issue.priority} Priority</div>
+            <div className="title">{param.issue.title}</div>
             <div className="bottom">
                 <div className="comment">
                     <MdComment />
@@ -39,4 +36,4 @@ const Issue = (param: IssueParam) => {
     )
 }
 
-export default Issue;
+export default IssueElement;

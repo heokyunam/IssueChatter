@@ -2,17 +2,8 @@ import IssueList from '../elements/issueList/IssueList';
 import {FiChevronDown} from 'react-icons/fi';
 import {HiUserCircle} from 'react-icons/hi';
 import {RiAddCircleLine} from 'react-icons/ri';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../stores';
 
-const Issues = () => {
-    const issues = useSelector((state: RootState) => state.issues.issues);
-
-    const backlogs = issues.filter(value => value.state == "Backlog");
-    const inprogress = issues.filter(value => value.state == "InProgress");
-    const reviews = issues.filter(value => value.state == "Review");
-    const completes = issues.filter(value => value.state == "Complete");
-
+const IssuePage = () => {
     return (
         <div className="issue-page">
             <div className="top-area">
@@ -32,13 +23,13 @@ const Issues = () => {
                 </div>
             </div>
             <div className="kanban">
-                <IssueList type="Backlog" issues={backlogs}/>
-                <IssueList type="InProgress" issues={inprogress}/>
-                <IssueList type="Review" issues={reviews}/>
-                <IssueList type="Complete" issues={completes}/>
+                <IssueList type="Backlog"/>
+                <IssueList type="InProgress"/>
+                <IssueList type="Review"/>
+                <IssueList type="Complete"/>
             </div>
         </div>
     )
 }
 
-export default Issues;
+export default IssuePage;

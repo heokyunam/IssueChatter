@@ -1,13 +1,13 @@
-import IssueElement from "./Issue";
+import IssueElement from "./IssueElement";
 import './IssueList.scss';
 import {RiAddCircleLine} from 'react-icons/ri';
 import { Issue } from "../../../stores/Issues";
 import BlankIssue from "./BlankIssue";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../../stores";
 
 interface IssueListParam {
-    type: "Backlog" | "InProgress" | "Review" | "Complete",
-    issues: Issue[]
+    type: "Backlog" | "InProgress" | "Review" | "Complete"
 }
 
 const typeDict = {
@@ -18,13 +18,19 @@ const typeDict = {
 }
 
 const IssueList = (param: IssueListParam) => {
+    const issues = useSelector((state: RootState) => state.issues.issues.filter(value => value.state == param.type));
     const topColorClass = typeDict[param.type].className;
     const dispatch = useDispatch();
 
     const showAddIssuePopup = () => {
         dispatch({
-            type: "SHOW_ISSUE_EDIT_POPUP",
+            type: "SHOW_ISSUE_EDIT",
             payload: true
+        })
+
+        dispatch({
+            type: "SET_ISSUE_STATE",
+            payload: param.type
         })
     }
 
@@ -32,8 +38,8 @@ const IssueList = (param: IssueListParam) => {
         <div className="issue-list">
             <div className={"top-color " + topColorClass}></div>
             <div className="title">{param.type}</div>
-            {param.issues.map(value => (
-                <IssueElement priority={value.priority} title={value.title}/>
+            {issues.map(value => (
+                <IssueElement issue={value}/>
             ))}
             <BlankIssue />
             <div className="add-issue" onClick={showAddIssuePopup}>

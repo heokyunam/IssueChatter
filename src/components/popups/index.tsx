@@ -5,7 +5,7 @@ import './index.scss';
 
 
 const Popup = () => {
-    const showIssueEdit = useSelector((state: RootState) => (state.popup.showIssueEdit))
+    const showIssueEdit = useSelector((state: RootState) => (state.issues.showEdit))
 
     return (
         <div className="popup-area">

@@ -3,16 +3,12 @@ import { Editor } from 'react-draft-wysiwyg';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import { EditorState } from 'draft-js';
 
-const TextEditor = () => {
-  // useState로 상태관리하기 초기값은 EditorState.createEmpty()
-  // EditorState의 비어있는 ContentState 기본 구성으로 새 개체를 반환 => 이렇게 안하면 상태 값을 나중에 변경할 수 없음.
-  const [editorState, setEditorState] = useState(EditorState.createEmpty());
+interface TextEditorParam {
+  editorState: EditorState,
+  setEditorState(editorState: EditorState): void,
+}
 
-  const onEditorStateChange = (editorState: EditorState) => {
-    // editorState에 값 설정
-    setEditorState(editorState);
-  };
-
+const TextEditor = (params: TextEditorParam) => {
   return (
     <Editor
     // 에디터와 툴바 모두에 적용되는 클래스
@@ -35,9 +31,9 @@ const TextEditor = () => {
         locale: 'ko',
     }}
     // 초기값 설정
-    editorState={editorState}
+    editorState={params.editorState}
     // 에디터의 값이 변경될 때마다 onEditorStateChange 호출
-    onEditorStateChange={onEditorStateChange}
+    onEditorStateChange={params.setEditorState}
     />
   );
 };
