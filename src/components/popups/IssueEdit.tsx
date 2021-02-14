@@ -8,9 +8,16 @@ import { Priority, State } from '../../stores/Issues';
 import { useEffect } from 'react';
 import { v4 } from 'uuid';
 import { EMPTY_TITLE } from '../../lang';
+import {BsTrash} from "react-icons/bs";
+import {GrEdit} from "react-icons/gr";
+import {ImCheckboxChecked, ImCheckboxUnchecked} from "react-icons/im";
+import {CgAddR} from "react-icons/cg";
+import {HiUserCircle} from "react-icons/hi";
+import TodoItem from '../elements/issueEdit/TodoItem';
 
 const IssueEdit = () => {
     const issues = useSelector((state: RootState) => state.issues);
+    const todos = issues.todos.filter(value => value.issueid == issues.uuid);
     const dispatch = useDispatch();
 
     const closePopup = () => {
@@ -80,6 +87,16 @@ const IssueEdit = () => {
         }
     }
 
+    const addTodo = () => {
+        dispatch({
+            type: "INSERT_TODO",
+            payload: {
+                uuid: v4(),
+                issueid: issues.uuid,
+            }
+        })
+    }
+
     return (
         <div className="popup issue-edit">
             <div className="title">
@@ -117,6 +134,16 @@ const IssueEdit = () => {
                         <input type="text" value={issues.title} onChange={e=>setTitle(e.target.value)}/>
                     </div>
                     <TextEditor editorState={issues.content} setEditorState={setEditorState}/>
+                </div>
+                <div className="todo-area">
+                    {
+                        todos.map(value => <TodoItem todo={value}/>)
+                    }
+                    
+                    <div className="todo-item add">
+                        <CgAddR />
+                        <div className="text" onClick={addTodo}>TODO 추가하기</div>
+                    </div>
                 </div>
             </div>  
             <div className="button-area">

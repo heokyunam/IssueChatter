@@ -8,6 +8,14 @@ export const State = [
     "Backlog", "InProgress", "Review", "Complete"
 ]
 
+export type Todo = {
+    uuid: string,
+    title: string,
+    issueid: string,
+    user?: string,
+    state: "InProgress" | "Complete"
+}
+
 export type Issue = {
     uuid: string,
     title: string,
@@ -66,12 +74,46 @@ type SetIssueAction = {
     payload: Issue
 }
 
+type InsertTodoAction = {
+    type: "INSERT_TODO",
+    payload: {
+        uuid: string,
+        issueid: string,
+    }
+}
+
+type SetTodoStateAction = {
+    type: "SET_TODO_STATE",
+    payload: {
+        uuid: string,
+        state: "InProgress" | "Complete",
+        user?: string
+    }
+}
+
+type DeleteTodoAction = {
+    type: "DELETE_TODO",
+    payload: {
+        uuid: string,
+    }
+}
+
+type SetTodoTitleAction = {
+    type: "SET_TODO_TITLE",
+    payload: {
+        uuid: string,
+        title: string,
+    }
+}
+
 export type IssueAction = InsertIssueAction | UpdateIssueAction | DeleteIssueAction | LoadIssuesAction
     | ShowIssueEditAction | SetIssueTitleAction | SetIssueContentAction
-    | SetIssueStateAction | SetIssuePriorityAction | SetIssueAction;
+    | SetIssueStateAction | SetIssuePriorityAction | SetIssueAction
+    | InsertTodoAction | SetTodoStateAction | SetTodoTitleAction | DeleteTodoAction;
 
 export type IssuesState = {
     issues: Issue[],
+    todos: Todo[],
     showEdit: boolean,
     title: string,
     content: EditorState,
@@ -106,6 +148,21 @@ const initialState: IssuesState = {
         content: EditorState.createWithContent(ContentState.createFromText("연습하기")),
         state: "Complete"
     },
+    ],
+    todos: [
+        {
+            uuid: "23523",
+            title: "CSS 공부하기",
+            issueid: "5555",
+            state: "InProgress",
+        },
+        {
+            uuid: "13241",
+            title: "Redux 공부하기",
+            issueid: "5555",
+            state: "Complete",
+            user: "heokyunam",
+        },
     ],
     showEdit: false,
     title: "",
@@ -158,7 +215,47 @@ export const issuesReducer = (
                     , content: action.payload.content
                     , state: action.payload.state
                     , priority: action.payload.priority
+                };
+            case "INSERT_TODO":
+                const newTodo:Todo = {
+                    uuid: action.payload.uuid,
+                    issueid: action.payload.issueid,
+                    state: "InProgress",
+                    title: "새 TODO",                    
                 }
+                return {
+                    ...state,
+                    todos: [
+                        ...state.todos,
+                        newTodo
+                    ]
+                }
+            case "SET_TODO_STATE":
+                var changedTodos = state.todos;
+                var changedTodo = changedTodos.filter(value => value.uuid == action.payload.uuid)[0];
+                changedTodo.state = action.payload.state;
+                changedTodo.user = action.payload.user;
+
+                return {
+                    ...state,
+                    todos: changedTodos
+                };
+            case "SET_TODO_TITLE":
+                var changedTodos = state.todos;
+                var changedTodo = changedTodos.filter(value => value.uuid == action.payload.uuid)[0];
+                changedTodo.title = action.payload.title;
+
+                return {
+                    ...state,
+                    todos: changedTodos
+                };
+            case "DELETE_TODO":
+                var deletedTodos = state.todos.filter(value => value.uuid != action.payload.uuid);
+                
+                return {
+                    ...state,
+                    todos: deletedTodos
+                };
             default:
                 return state;
         }
