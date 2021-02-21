@@ -64,6 +64,14 @@ type SetIssueStateAction = {
     payload: "Backlog" | "InProgress" | "Review" | "Complete"
 }
 
+type MoveIssueStateAction = {
+    type: "MOVE_ISSUE_STATE",
+    payload: {
+        id: string,
+        state: "Backlog" | "InProgress" | "Review" | "Complete",
+    }
+}
+
 type SetIssuePriorityAction = {
     type: "SET_ISSUE_PRIORITY",
     payload: "low" | "med" | "high"
@@ -108,7 +116,7 @@ type SetTodoTitleAction = {
 
 export type IssueAction = InsertIssueAction | UpdateIssueAction | DeleteIssueAction | LoadIssuesAction
     | ShowIssueEditAction | SetIssueTitleAction | SetIssueContentAction
-    | SetIssueStateAction | SetIssuePriorityAction | SetIssueAction
+    | SetIssueStateAction | MoveIssueStateAction | SetIssuePriorityAction | SetIssueAction
     | InsertTodoAction | SetTodoStateAction | SetTodoTitleAction | DeleteTodoAction;
 
 export type IssuesState = {
@@ -205,6 +213,12 @@ export const issuesReducer = (
                 return {...state, content: action.payload};
             case "SET_ISSUE_STATE":
                 return {...state, state: action.payload};
+            case "MOVE_ISSUE_STATE":
+                let issues = state.issues;
+                let issue = issues.filter(value => value.uuid == action.payload.id)[0]; // 여기서 에러나는데 왜 나는지 모름
+                issue.state = action.payload.state;
+
+                return {...state, issues: issues};
             case "SET_ISSUE_PRIORITY":
                 return {...state, priority: action.payload};
             case "SET_ISSUE":

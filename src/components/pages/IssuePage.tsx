@@ -23,10 +23,10 @@ const IssuePage = () => {
                 </div>
             </div>
             <div className="kanban">
-                <IssueList type="Backlog"/>
-                <IssueList type="InProgress"/>
-                <IssueList type="Review"/>
-                <IssueList type="Complete"/>
+                <IssueList state="Backlog"/>
+                <IssueList state="InProgress"/>
+                <IssueList state="Review"/>
+                <IssueList state="Complete"/>
             </div>
         </div>
     )
